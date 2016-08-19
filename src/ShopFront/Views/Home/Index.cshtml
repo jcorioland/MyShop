@@ -1,0 +1,87 @@
+@inject Microsoft.Extensions.Options.IOptions<ShopFront.Models.Settings> settings
+@{
+    ViewData["Title"] = "Welcome home";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1>@ViewData["Title"]</h1>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <h3>Products Api</h3>
+        <span id="ProductsApiPlaceholder"></span>
+    </div>
+    <div class="col-lg-4">
+        <h3>Recommandations Api</h3>
+        <span id="RecommandationsApiPlaceholder"></span>
+    </div>
+    <div class="col-lg-4">
+        <h3>Ratings Api</h3>
+        <span id="RatingsApiPlaceholder"></span>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        ($(document).ready(function(){
+            var productsApiPlaceholder = $("#ProductsApiPlaceholder");
+            var recommandationsApiPlaceholder = $("#RecommandationsApiPlaceholder");
+            var ratingsApiPlaceholder = $("#RatingsApiPlaceholder");
+
+            var productsApiUrl = "@settings.Value.ProductsApiUrl" + "/api/products";
+            var recommandationsApiUrl = "@settings.Value.RecommandationsApiUrl" + "/api/recommandations";
+            var ratingsApiUrl = "@settings.Value.RatingsApiUrl" + "/api/ratings";
+
+            productsApiPlaceholder.text("chargement...");
+            recommandationsApiPlaceholder.text("chargement...");
+            ratingsApiPlaceholder.text("chargement...");
+
+            function callProductsApi(){
+                $.ajax({
+                    url: productsApiUrl + "?_=" + Math.random(),
+                    type: "GET"
+                })
+                .success(function(message){
+                    productsApiPlaceholder.text(message);
+                })
+                .error(function(){
+                    productsApiPlaceholder.text("Erreur.");
+                });
+            };
+
+            function callRecommandationsApi(){
+                $.ajax({
+                    url: recommandationsApiUrl + "?_=" + Math.random(),
+                    type: "GET"
+                })
+                .success(function(message){
+                    recommandationsApiPlaceholder.text(message);
+                })
+                .error(function(){
+                    recommandationsApiPlaceholder.text("Erreur.");
+                });
+            };
+
+            function callRatingsApi(){
+                $.ajax({
+                    url: ratingsApiUrl + "?_=" + Math.random(),
+                    type: "GET"
+                })
+                .success(function(message){
+                    ratingsApiPlaceholder.text(message);
+                })
+                .error(function(){
+                    ratingsApiPlaceholder.text("Erreur.");
+                });
+            };
+
+            setInterval(callProductsApi, 3000);
+            setInterval(callRecommandationsApi, 3000);
+            setInterval(callRatingsApi, 3000);
+        }));
+    </script>
+}
