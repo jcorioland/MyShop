@@ -29,6 +29,9 @@ namespace ProductsApi
         {
             // Add framework services.
             services.AddMvc();
+
+            // Add Cors
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +41,12 @@ namespace ProductsApi
             loggerFactory.AddDebug();
 
             app.UseMvc();
+
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+            );
         }
     }
 }
