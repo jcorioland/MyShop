@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Fabric;
 
 namespace RecommandationsApi.Controllers
 {
@@ -13,7 +14,7 @@ namespace RecommandationsApi.Controllers
         [HttpGet]
         public string Get()
         {
-            string recommandationsApiVersion = "1.0";
+            string recommandationsApiVersion = FabricRuntime.GetActivationContext().CodePackageVersion;
             return $"Exécution de RecommandationsApi en version {recommandationsApiVersion}. Serveur : {Environment.MachineName}";
         }
     }

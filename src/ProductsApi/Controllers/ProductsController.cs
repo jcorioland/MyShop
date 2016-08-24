@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Fabric;
 
 namespace ProductsApi.Controllers
 {
@@ -13,7 +14,7 @@ namespace ProductsApi.Controllers
         [HttpGet]
         public string Get()
         {
-            string productsApiVersion = "1.0";
+            string productsApiVersion = FabricRuntime.GetActivationContext().CodePackageVersion;
             return $"Exécution de ProductsApi en version {productsApiVersion}. Serveur : {Environment.MachineName}";
         }
     }

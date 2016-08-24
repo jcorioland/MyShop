@@ -1,43 +1,80 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
+using Microsoft.ServiceFabric.Services.Communication.Runtime;
+using Microsoft.ServiceFabric.Services.Runtime;
+using System.Collections.Generic;
+using System.Fabric;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ProductsApi
 {
     public class Program
     {
+        // Entry point for the application.
         public static void Main(string[] args)
         {
-            var config = new ConfigurationBuilder()
-                .AddCommandLine(args)
-                .AddEnvironmentVariables(prefix: "ASPNETCORE_")
-                .AddEnvironmentVariables(prefix: "SHOP_")
-                .Build();
+            ServiceRuntime.RegisterServiceAsync("ProductsApiType", context => new WebHostingService(context, "ServiceEndpoint")).GetAwaiter().GetResult();
 
-            string port = config["PRODUCTS_API_PORT"];
+            Thread.Sleep(Timeout.Infinite);
+        }
 
-            if(string.IsNullOrEmpty(port))
+        /// <summary>
+        /// A specialized stateless service for hosting ASP.NET Core web apps.
+        /// </summary>
+        internal sealed class WebHostingService : StatelessService, ICommunicationListener
+        {
+            private readonly string _endpointName;
+
+            private IWebHost _webHost;
+
+            public WebHostingService(StatelessServiceContext serviceContext, string endpointName)
+                : base(serviceContext)
             {
-                throw new InvalidOperationException("SHOP_PRODUCTS_API_PORT configuration was not found.");
+                _endpointName = endpointName;
             }
 
-            string url = $"http://0.0.0.0:{port}";
-            
-            var host = new WebHostBuilder()
-                .UseConfiguration(config)
-                .UseKestrel()
-                .UseUrls(url)
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
+            #region StatelessService
 
-            host.Run();
+            protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+            {
+                return new[] { new ServiceInstanceListener(_ => this) };
+            }
+
+            #endregion StatelessService
+
+            #region ICommunicationListener
+
+            void ICommunicationListener.Abort()
+            {
+                _webHost?.Dispose();
+            }
+
+            Task ICommunicationListener.CloseAsync(CancellationToken cancellationToken)
+            {
+                _webHost?.Dispose();
+
+                return Task.FromResult(true);
+            }
+
+            Task<string> ICommunicationListener.OpenAsync(CancellationToken cancellationToken)
+            {
+                var endpoint = FabricRuntime.GetActivationContext().GetEndpoint(_endpointName);
+
+                string serverUrl = $"{endpoint.Protocol}://{FabricRuntime.GetNodeContext().IPAddressOrFQDN}:{endpoint.Port}";
+
+                _webHost = new WebHostBuilder().UseKestrel()
+                                               .UseContentRoot(Directory.GetCurrentDirectory())
+                                               .UseStartup<Startup>()
+                                               .UseUrls(serverUrl)
+                                               .Build();
+
+                _webHost.Start();
+
+                return Task.FromResult(serverUrl);
+            }
+
+            #endregion ICommunicationListener
         }
     }
 }

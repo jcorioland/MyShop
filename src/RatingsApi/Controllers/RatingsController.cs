@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Fabric;
 
 namespace RatingsApi.Controllers
 {
@@ -13,7 +14,7 @@ namespace RatingsApi.Controllers
         [HttpGet]
         public string Get()
         {
-            string ratingsApiVersion = "1.0";
+            string ratingsApiVersion = FabricRuntime.GetActivationContext().CodePackageVersion;
             return $"Exécution de RatingsApi en version {ratingsApiVersion}. Serveur : {Environment.MachineName}";
         }
     }
