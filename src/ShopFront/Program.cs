@@ -59,7 +59,14 @@ namespace ShopFront
 
             Task<string> ICommunicationListener.OpenAsync(CancellationToken cancellationToken)
             {
-                var endpoint = FabricRuntime.GetActivationContext().GetEndpoint(_endpointName);
+                var activationContext = FabricRuntime.GetActivationContext();
+                var endpoint = activationContext.GetEndpoint(_endpointName);
+                var conf = activationContext.GetConfigurationPackageObject("Config");
+                var confSection = conf.Settings.Sections["ShopConfiguration"];
+
+                string environmentName = confSection.Parameters["Environment"].Value;
+
+                System.Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", environmentName);
 
                 string serverUrl = $"{endpoint.Protocol}://{FabricRuntime.GetNodeContext().IPAddressOrFQDN}:{endpoint.Port}";
 

@@ -48,6 +48,7 @@
       "Views",
       "Areas/**/Views",
       "appsettings.json",
+      "appsettings.Development.json",
       "web.config"
     ]
   },
