@@ -1,0 +1,26 @@
+version: '2'
+services:
+  products-service:
+    images: jcorioland/shop-windows-products-api
+    ports:
+      - "5001:5001"
+    environment: 
+      - SHOP_PRODUCTS_API_PORT=5001
+  ratings-service:
+    images: jcorioland/shop-windows-ratings-api
+    ports:
+      - "5002:5002"
+    environment:
+      - SHOP_RATING_API_PORT=5002
+  recommandations-service:
+    images: jcorioland/shop-windows-recommandations-api
+    ports:
+      - "5003:5003"
+    environment:
+      - SHOP_RECOMMANDATIONS_API_PORT=5003
+  shop-front:
+    images: jcorioland/shop-windows-front
+    ports:
+      - "80:5004"
+    environment:
+      - SHOP_FRONT_API_PORT=5004
