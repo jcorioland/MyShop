@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:latest
+FROM jcorioland/win-dotnetcore:latest
 
 EXPOSE 5003/tcp
 ENTRYPOINT ["dotnet", "run"]
