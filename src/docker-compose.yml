@@ -27,7 +27,3 @@ services:
       - SHOP_PRODUCTS_API_URL=http://localhost:5001
       - SHOP_RATINGS_API_URL=http://localhost:5002
       - SHOP_RECOMMANDATIONS_API_URL=http://localhost:5003
-
-networks:
-  default:
-    driver: host
