@@ -1,25 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="ServiceFabricShopType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="ServiceFabricShopType" ApplicationTypeVersion="1.0.4" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="ShopFront_InstanceCount" DefaultValue="-1" />
     <Parameter Name="ProductsApi_InstanceCount" DefaultValue="-1" />
     <Parameter Name="RatingsApi_InstanceCount" DefaultValue="-1" />
     <Parameter Name="RecommandationsApi_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="Environment_Name" DefaultValue="Development" />
   </Parameters>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="ShopFrontPkg" ServiceManifestVersion="1.0.0" />
+    <ServiceManifestRef ServiceManifestName="ShopFrontPkg" ServiceManifestVersion="1.0.4" />
+    <ConfigOverrides>
+      <ConfigOverride Name="Config">
+        <Settings>
+          <Section Name="ShopConfiguration">
+            <Parameter Name="Environment" Value="[Environment_Name]" />
+          </Section>
+        </Settings>
+      </ConfigOverride>
+    </ConfigOverrides>
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="ProductsApiPkg" ServiceManifestVersion="1.0.4" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="ProductsApiPkg" ServiceManifestVersion="1.0.0" />
+    <ServiceManifestRef ServiceManifestName="RatingsApiPkg" ServiceManifestVersion="1.0.4" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="RatingsApiPkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="RecommandationsApiPkg" ServiceManifestVersion="1.0.0" />
+    <ServiceManifestRef ServiceManifestName="RecommandationsApiPkg" ServiceManifestVersion="1.0.4" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <DefaultServices>
