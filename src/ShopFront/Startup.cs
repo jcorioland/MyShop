@@ -29,6 +29,7 @@ namespace ShopFront
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddCors();
             services.AddMvc();
 
             // settings
@@ -55,6 +56,13 @@ namespace ShopFront
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyHeader();
+                policy.AllowAnyOrigin();
+                policy.AllowAnyMethod();
+            });
 
             app.UseStaticFiles();
 
