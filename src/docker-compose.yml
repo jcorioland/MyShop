@@ -11,7 +11,7 @@ services:
     ports:
       - "5002:5002"
     environment:
-      - SHOP_RATING_API_PORT=5002
+      - SHOP_RATINGS_API_PORT=5002
   recommandations-service:
     image: jcodlbpiplabel.northeurope.cloudapp.azure.com/admin/shop-recommandations-api:20160929.6
     ports:
