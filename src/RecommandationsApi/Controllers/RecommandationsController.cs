@@ -15,7 +15,7 @@ namespace RecommandationsApi.Controllers
         public string Get()
         {
             string recommandationsApiVersion = FabricRuntime.GetActivationContext().CodePackageVersion;
-            return $"Exécution de RecommandationsApi en version {recommandationsApiVersion}. Serveur : {Environment.MachineName}";
+            return $"Exécution de RecommandationsApi en version {recommandationsApiVersion}. \r\n Context : {FabricRuntime.GetNodeContext().IPAddressOrFQDN} - {FabricRuntime.GetNodeContext().NodeName} - {FabricRuntime.GetNodeContext().NodeId} - {FabricRuntime.GetNodeContext().NodeInstanceId}";
         }
     }
 }

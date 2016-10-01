@@ -15,7 +15,7 @@ namespace RatingsApi.Controllers
         public string Get()
         {
             string ratingsApiVersion = FabricRuntime.GetActivationContext().CodePackageVersion;
-            return $"Exécution de RatingsApi en version {ratingsApiVersion}. Serveur : {Environment.MachineName}";
+            return $"Exécution de RatingsApi en version {ratingsApiVersion}. \r\n Context : {FabricRuntime.GetNodeContext().IPAddressOrFQDN} - {FabricRuntime.GetNodeContext().NodeName} - {FabricRuntime.GetNodeContext().NodeId} - {FabricRuntime.GetNodeContext().NodeInstanceId}";
         }
     }
 }
