@@ -20,9 +20,11 @@
                                     AzureActiveDirectory="true"
                                     ServerCertThumbprint="0123456789012345678901234567890123456789" />
   -->
-  <ClusterConnectionParameters ConnectionEndpoint="experiences-shop.northeurope.cloudapp.azure.com:19000" />
+  <!--<ClusterConnectionParameters ConnectionEndpoint="exp16-clustersf-niclerc.westeurope.cloudapp.azure.com:19000" X509Credential="true" FindType="FindByThumbprint" FindValue="1301B76FBA0B53ACF6C5EBAAD7FB5F5375805151" ServerCertThumbprint="1301B76FBA0B53ACF6C5EBAAD7FB5F5375805151" StoreLocation="CurrentUser" StoreName="My"      
+  />-->
+  <ClusterConnectionParameters ConnectionEndpoint="exp16-clustersf-niclerc.westeurope.cloudapp.azure.com:19000" />
   <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
-  <UpgradeDeployment Mode="Monitored" Enabled="true">
+  <UpgradeDeployment Mode="Monitored" Enabled="false">
     <Parameters FailureAction="Rollback" Force="True" />
   </UpgradeDeployment>
 </PublishProfile>

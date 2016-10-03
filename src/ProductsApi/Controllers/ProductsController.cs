@@ -20,7 +20,6 @@ namespace ProductsApi.Controllers
 
             return $"Exécution de ProductsApi en version {productsApiVersion}.\r\n Context : {FabricRuntime.GetNodeContext().IPAddressOrFQDN} - {FabricRuntime.GetNodeContext().NodeName} - {FabricRuntime.GetNodeContext().NodeId} - {FabricRuntime.GetNodeContext().NodeInstanceId}";
             
-            //return $"Exécution de ProductsApi en version {productsApiVersion}. Serveur : {Environment.MachineName}";
         }
     }
 }
