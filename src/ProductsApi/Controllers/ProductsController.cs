@@ -14,6 +14,7 @@ namespace ProductsApi.Controllers
         public string Get()
         {
             string productsApiVersion = "1.2";
+            // string productsApiVersion = "1.2-new";
             return $"Exécution de ProductsApi en version {productsApiVersion}. Serveur : {Environment.MachineName}";
         }
     }

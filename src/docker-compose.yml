@@ -4,7 +4,9 @@ services:
   proxy:
     build: proxy
     image: jcodlbpiplabel.northeurope.cloudapp.azure.com/docker-datacenter/proxy:20161003
-    ports: ["80:80"]
+    ports: ["81:80"]
+    # environment:
+    #   - "constraint:node==jcoucp0-ucpnode"
 
   shop:
     build: ShopFront
