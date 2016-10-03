@@ -2,7 +2,7 @@ FROM microsoft/dotnet:latest
 
 WORKDIR /app
 ENTRYPOINT ["dotnet", "run"]
-EXPOSE 5002/tcp
+EXPOSE 5002
 
 COPY project.json ./
 RUN dotnet restore
