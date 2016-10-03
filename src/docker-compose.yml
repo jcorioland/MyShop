@@ -1,27 +1,31 @@
 version: '2'
 services:
   products-service:
+    build: ./ProductsApi
     image: jcodlbpiplabel.northeurope.cloudapp.azure.com/admin/shop-products-api:20160930.1
     ports:
       - "5001:5001"
     environment: 
       - SHOP_PRODUCTS_API_PORT=5001
-      - "constraint:node==jcoucp0-ucpnode"
+
   ratings-service:
+    build: ./RatingsApi
     image: jcodlbpiplabel.northeurope.cloudapp.azure.com/admin/shop-ratings-api:20160930.1
     ports:
       - "5002:5002"
     environment:
       - SHOP_RATINGS_API_PORT=5002
-      - "constraint:node==jcoucp0-ucpnode"
+
   recommandations-service:
+    build: ./RecommandationsApi
     image: jcodlbpiplabel.northeurope.cloudapp.azure.com/admin/shop-recommandations-api:20160930.1
     ports:
       - "5003:5003"
     environment:
       - SHOP_RECOMMANDATIONS_API_PORT=5003
-      - "constraint:node==jcoucp0-ucpnode"
+
   shop-front:
+    build: ./ShopFront
     image: jcodlbpiplabel.northeurope.cloudapp.azure.com/admin/shop-front:20160930.1
     ports:
       - "81:5004"
@@ -30,4 +34,4 @@ services:
       - SHOP_PRODUCTS_API_URL=http://jconlbpiplabel.northeurope.cloudapp.azure.com:5001
       - SHOP_RATINGS_API_URL=http://jconlbpiplabel.northeurope.cloudapp.azure.com:5002
       - SHOP_RECOMMANDATIONS_API_URL=http://jconlbpiplabel.northeurope.cloudapp.azure.com:5003
-      - "constraint:node==jcoucp0-ucpnode"
+      

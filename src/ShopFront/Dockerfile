@@ -1,11 +1,11 @@
 FROM microsoft/dotnet:latest
 
-EXPOSE 5004/tcp
-ENTRYPOINT ["dotnet", "run"]
-
-COPY . /app
-
 WORKDIR /app
+ENTRYPOINT ["dotnet", "run"]
+EXPOSE 5004/tcp
 
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
+COPY project.json ./
+RUN dotnet restore
+
+COPY . ./
+RUN dotnet build
