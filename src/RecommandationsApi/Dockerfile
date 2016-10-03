@@ -1,4 +1,4 @@
-FROM jcorioland/win-dotnetcore:latest
+FROM jcorioland/dotnetcore:win2k16tp5
 
 EXPOSE 5003/tcp
 ENTRYPOINT ["dotnet", "run"]

@@ -1,4 +1,4 @@
-FROM microsoft/windowsservercore:latest
+FROM microsoft/windowsservercore:TP5
 
 ADD DotNetCore.1.0.0-SDK.Preview2-x64.exe /temp/
 
