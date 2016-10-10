@@ -1,11 +1,13 @@
-FROM jcorioland/dotnetcore:win2k16tp5
+FROM jcorioland/dotnetcore:latest
 
-EXPOSE 5003/tcp
-ENTRYPOINT ["dotnet", "run"]
-
-COPY . /app
+MAINTAINER Julien Corioland, Microsoft (@jcorioland)
 
 WORKDIR /app
+ENTRYPOINT ["dotnet", "run"]
+EXPOSE 5000
 
+COPY project.json ./
 RUN ["dotnet", "restore"]
+
+COPY . /app
 RUN ["dotnet", "build"]

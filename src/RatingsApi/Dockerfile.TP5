@@ -1,4 +1,4 @@
-FROM jcorioland/dotnetcore:latest
+FROM jcorioland/dotnetcore:win2k16tp5
 
 MAINTAINER Julien Corioland, Microsoft (@jcorioland)
 
