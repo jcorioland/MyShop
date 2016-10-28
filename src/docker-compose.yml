@@ -2,6 +2,7 @@ version: '2'
 services:
   proxy:
     image: jcorioland/shop-nginx-proxy:latest
+    ports: ["80:80"]
   products:
     image: jcorioland/shop-products-api:20161028.2
   ratings:
@@ -9,8 +10,8 @@ services:
   recommandations:
     image: jcorioland/shop-recommandations-api:20161028.2
   shop:
-    image: jcorioland/shop-front:20160930.2
+    image: jcorioland/shop-front:20161028.2
     environment:
-      - SHOP_PRODUCTS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/products/api/products
-      - SHOP_RATINGS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/ratings/api/ratings
-      - SHOP_RECOMMANDATIONS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/recommandations/api/recommandations
+      - SHOP_PRODUCTS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/products/
+      - SHOP_RATINGS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/ratings/
+      - SHOP_RECOMMANDATIONS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/recommandations/
