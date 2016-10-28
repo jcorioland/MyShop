@@ -13,8 +13,8 @@ namespace RecommandationsApi.Controllers
         [HttpGet]
         public string Get()
         {
-            string recommandationsApiVersion = "1.1";
-            return $"Exécution de RecommandationsApi en version {recommandationsApiVersion}. Serveur : {Environment.MachineName}";
+            string recommandationsApiVersion = "1.0";
+            return $"Executing RecommandationsApi version {recommandationsApiVersion}. Hostname : {Environment.MachineName}";
         }
     }
 }
