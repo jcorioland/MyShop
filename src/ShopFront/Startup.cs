@@ -31,14 +31,6 @@ namespace ShopFront
             // Add framework services.
             services.AddCors();
             services.AddMvc();
-
-            // settings
-            services.Configure<ShopFront.Models.Settings>(settings => 
-            {
-                settings.ProductsApiUrl = Configuration["SHOP_PRODUCTS_API_URL"];
-                settings.RecommandationsApiUrl = Configuration["SHOP_RECOMMANDATIONS_API_URL"];
-                settings.RatingsApiUrl = Configuration["SHOP_RATINGS_API_URL"];
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

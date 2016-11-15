@@ -1,4 +1,3 @@
-@inject Microsoft.Extensions.Options.IOptions<ShopFront.Models.Settings> settings
 @{
     ViewData["Title"] = "Welcome home";
 }
@@ -32,9 +31,9 @@
             var recommandationsApiPlaceholder = $("#RecommandationsApiPlaceholder");
             var ratingsApiPlaceholder = $("#RatingsApiPlaceholder");
 
-            var productsApiUrl = "@settings.Value.ProductsApiUrl" + "/api/products";
-            var recommandationsApiUrl = "@settings.Value.RecommandationsApiUrl" + "/api/recommandations";
-            var ratingsApiUrl = "@settings.Value.RatingsApiUrl" + "/api/ratings";
+            var productsApiUrl = "/api/products";
+            var recommandationsApiUrl = "/api/recommandations";
+            var ratingsApiUrl = "/api/ratings";
 
             productsApiPlaceholder.text("chargement...");
             recommandationsApiPlaceholder.text("chargement...");
