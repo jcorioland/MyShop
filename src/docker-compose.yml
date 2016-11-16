@@ -4,13 +4,13 @@ services:
     image: jcorioland/shop-nginx-proxy:latest
     ports: ["80:80"]
   products:
-    image: jcorioland/shop-products-api:#{Build.BuildNumber}#
+    image: jcorioland/shop-products-api:BuildNumber
   ratings:
-    image: jcorioland/shop-ratings-api:#{Build.BuildNumber}#
+    image: jcorioland/shop-ratings-api:BuildNumber
   recommandations:
-    image: jcorioland/shop-recommandations-api:#{Build.BuildNumber}#
+    image: jcorioland/shop-recommandations-api:BuildNumber
   shop:
-    image: jcorioland/shop-front:#{Build.BuildNumber}#
+    image: jcorioland/shop-front:BuildNumber
     environment:
       - SHOP_PRODUCTS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/products/
       - SHOP_RATINGS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/ratings/
