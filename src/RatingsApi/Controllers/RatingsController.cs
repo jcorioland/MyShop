@@ -13,7 +13,7 @@ namespace RatingsApi.Controllers
         [HttpGet]
         public string Get()
         {
-            string ratingsApiVersion = "1.0";
+            string ratingsApiVersion = "1.2";
             return $"Executing RatingsApi version {ratingsApiVersion}. Hostname : {Environment.MachineName}";
         }
     }
