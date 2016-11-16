@@ -1,16 +1,29 @@
 version: '2'
+networks:
+  myshop:
+    driver: overlay
 services:
   proxy:
-    image: jcorioland/shop-nginx-proxy:latest
+    image: jcorioland-microsoft.azurecr.io/shop/nginx-proxy:latest
     ports: ["80:80"]
+    networks:
+      - myshop
   products:
-    image: jcorioland/shop-products-api:BuildNumber
+    image: jcorioland-microsoft.azurecr.io/shop/products-api:BuildNumber
+    networks:
+      - myshop
   ratings:
-    image: jcorioland/shop-ratings-api:BuildNumber
+    image: jcorioland-microsoft.azurecr.io/shop/ratings-api:BuildNumber
+    networks:
+      - myshop
   recommandations:
-    image: jcorioland/shop-recommandations-api:BuildNumber
+    image: jcorioland-microsoft.azurecr.io/shop/recommandations-api:BuildNumber
+    networks:
+      - myshop
   shop:
-    image: jcorioland/shop-front:BuildNumber
+    image: jcorioland-microsoft.azurecr.io/shop/front:BuildNumber
+    networks:
+      - myshop
     environment:
       - SHOP_PRODUCTS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/products/
       - SHOP_RATINGS_API_URL=http://acsmyshop-agents.westeurope.cloudapp.azure.com/ratings/
