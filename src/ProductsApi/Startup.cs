@@ -30,6 +30,7 @@ namespace ProductsApi
             // Add framework services.
             services.AddCors();
             services.AddMvc();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +46,8 @@ namespace ProductsApi
             });
 
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUi();
         }
     }
 }
