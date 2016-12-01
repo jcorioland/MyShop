@@ -2,6 +2,8 @@
 
 This repo contains a demo application developped with ASP.NET Core 1.0 that can run on Windows, Linux, using Docker containers or Azure Service Fabric.
 
+![MyShop running on Azure Container Service using Linux containers](https://github.com/jcorioland/MyShop/blob/master/image737.png)
+
 The different scenarios are in the different branches of this repo:
 
 - [Docker Linux](https://github.com/jcorioland/CloudArchi-Samples/tree/docker-linux)
