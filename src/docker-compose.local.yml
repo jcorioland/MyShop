@@ -1,0 +1,30 @@
+version: '2'
+networks:
+  myshop:
+    driver: bridge
+services:
+  proxy:
+    image: shop-proxy:1.0
+    ports: ["80:80"]
+    networks:
+      - myshop
+  products:
+    image: products-api:1.0
+    networks:
+      - myshop
+  ratings:
+    image: ratings-api:1.0
+    networks:
+      - myshop
+  recommandations:
+    image: recommandations-api:1.0
+    networks:
+      - myshop
+  shop:
+    image: shop-front:1.0
+    networks:
+      - myshop
+    environment:
+      - SHOP_PRODUCTS_API_URL=http://10.0.75.2/products/
+      - SHOP_RATINGS_API_URL=http://10.0.75.2/ratings/
+      - SHOP_RECOMMANDATIONS_API_URL=http://10.0.75.2/recommandations/

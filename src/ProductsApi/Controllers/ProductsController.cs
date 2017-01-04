@@ -13,7 +13,7 @@ namespace ProductsApi.Controllers
         [HttpGet]
         public string Get()
         {
-            string productsApiVersion = "1.5";
+            string productsApiVersion = "1.0";
             return $"Executing ProductsApi version {productsApiVersion}. Hostname : {Environment.MachineName}";
         }
     }
