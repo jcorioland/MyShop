@@ -4,27 +4,27 @@ networks:
     driver: bridge
 services:
   proxy:
-    image: shop-proxy:1.0
-    ports: ["80:80"]
+    image: shop-proxy:latest
+    ports: ["81:80"]
     networks:
       - myshop
   products:
-    image: products-api:1.0
+    image: products-api:latest
     networks:
       - myshop
   ratings:
-    image: ratings-api:1.0
+    image: ratings-api:latest
     networks:
       - myshop
   recommandations:
-    image: recommandations-api:1.0
+    image: recommandations-api:latest
     networks:
       - myshop
   shop:
-    image: shop-front:1.0
+    image: shop-front:latest
     networks:
       - myshop
     environment:
-      - SHOP_PRODUCTS_API_URL=http://10.0.75.2/products/
-      - SHOP_RATINGS_API_URL=http://10.0.75.2/ratings/
-      - SHOP_RECOMMANDATIONS_API_URL=http://10.0.75.2/recommandations/
+      - SHOP_PRODUCTS_API_URL=http://10.0.75.2:81/products
+      - SHOP_RATINGS_API_URL=http://10.0.75.2:81/ratings
+      - SHOP_RECOMMANDATIONS_API_URL=http://10.0.75.2:81/recommandations
