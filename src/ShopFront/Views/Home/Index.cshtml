@@ -32,13 +32,17 @@
             var recommendationsApiPlaceholder = $("#RecommendationsApiPlaceholder");
             var ratingsApiPlaceholder = $("#RatingsApiPlaceholder");
 
-            var productsApiUrl = "@settings.Value.ProductsApiUrl" + "/api/products";
-            var recommendationsApiUrl = "@settings.Value.RecommendationsApiUrl" + "/api/recommendations";
-            var ratingsApiUrl = "@settings.Value.RatingsApiUrl" + "/api/ratings";
+//            var productsApiUrl = "@settings.Value.ProductsApiUrl" + "/api/products";
+//            var recommendationsApiUrl = "@settings.Value.RecommendationsApiUrl" + "/api/recommendations";
+//            var ratingsApiUrl = "@settings.Value.RatingsApiUrl" + "/api/ratings";
 
-            productsApiPlaceholder.text("chargement...");
-            recommendationsApiPlaceholder.text("chargement...");
-            ratingsApiPlaceholder.text("chargement...");
+              var productsApiUrl = "http://13.81.253.110/products";
+              var recommendationsApiUrl = "http://13.81.253.110/recommendations";
+              var ratingsApiUrl = "http://13.81.253.110//ratings";
+
+            productsApiPlaceholder.text("loading...");
+            recommendationsApiPlaceholder.text("loading...");
+            ratingsApiPlaceholder.text("loading...");
 
             function callProductsApi(){
                 $.ajax({
