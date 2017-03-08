@@ -8,7 +8,7 @@ spec:
     metadata:
       labels: 
         name: myshop-deployment
-        version: v0.2
+        version: v0.3
     spec:
       containers:
       - name: proxy
