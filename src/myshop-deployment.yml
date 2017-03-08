@@ -17,18 +17,19 @@ spec:
         - containerPort: 80
       - name: products
         image: bhacr-microsoft.azurecr.io/shop/products-api:BuildNumber
+        ports:
+        - containerPort: 5001
       - name: ratings
         image: bhacr-microsoft.azurecr.io/shop/ratings-api:BuildNumber
+        ports:
+        - containerPort: 5002
       - name: recommendations
         image: bhacr-microsoft.azurecr.io/shop/recommendations-api:BuildNumber
+        ports:
+        - containerPort: 5003
       - name: shop
         image: bhacr-microsoft.azurecr.io/shop/front:BuildNumber
-        env:
-        - name: SHOP_PRODUCTS_API_URL
-          value: http://bhk8s.westeurope.cloudapp.azure.com/products/
-        - name: SHOP_RATINGS_API_URL
-          value: http://bhk8s.westeurope.cloudapp.azure.com/ratings/
-        - name: SHOP_RECOMMANDATIONS_API_URL
-          value: http://bhk8s.westeurope.cloudapp.azure.com/recommendations/
+        ports:
+        - containerPort: 5000
       imagePullSecrets: 
         - name: bhacr
