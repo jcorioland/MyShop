@@ -30,3 +30,5 @@ spec:
           value: http://bhk8s.westeurope.cloudapp.azure.com/ratings/
         - name: SHOP_RECOMMANDATIONS_API_URL
           value: http://bhk8s.westeurope.cloudapp.azure.com/recommendations/
+      imagePullSecrets: 
+        - name: bhacr
