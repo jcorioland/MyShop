@@ -4,9 +4,9 @@ MAINTAINER Julien Corioland, Microsoft (@jcorioland)
 
 WORKDIR /app
 ENTRYPOINT ["dotnet", "run"]
-EXPOSE 5000
+EXPOSE 5002
 
-ENV ASPNETCORE_URLS http://0.0.0.0:5000
+ENV ASPNETCORE_URLS http://0.0.0.0:5002
 
 COPY project.json ./
 RUN ["dotnet", "restore"]

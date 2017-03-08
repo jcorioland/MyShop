@@ -16,8 +16,8 @@
         <span id="ProductsApiPlaceholder"></span>
     </div>
     <div class="col-lg-4">
-        <h3>Recommandations Api</h3>
-        <span id="RecommandationsApiPlaceholder"></span>
+        <h3>Recommendations Api</h3>
+        <span id="RecommendationsApiPlaceholder"></span>
     </div>
     <div class="col-lg-4">
         <h3>Ratings Api</h3>
@@ -29,15 +29,15 @@
     <script type="text/javascript">
         ($(document).ready(function(){
             var productsApiPlaceholder = $("#ProductsApiPlaceholder");
-            var recommandationsApiPlaceholder = $("#RecommandationsApiPlaceholder");
+            var recommendationsApiPlaceholder = $("#RecommendationsApiPlaceholder");
             var ratingsApiPlaceholder = $("#RatingsApiPlaceholder");
 
             var productsApiUrl = "@settings.Value.ProductsApiUrl" + "/api/products";
-            var recommandationsApiUrl = "@settings.Value.RecommandationsApiUrl" + "/api/recommandations";
+            var recommendationsApiUrl = "@settings.Value.RecommendationsApiUrl" + "/api/recommendations";
             var ratingsApiUrl = "@settings.Value.RatingsApiUrl" + "/api/ratings";
 
             productsApiPlaceholder.text("chargement...");
-            recommandationsApiPlaceholder.text("chargement...");
+            recommendationsApiPlaceholder.text("chargement...");
             ratingsApiPlaceholder.text("chargement...");
 
             function callProductsApi(){
@@ -53,16 +53,16 @@
                 });
             };
 
-            function callRecommandationsApi(){
+            function callRecommendationsApi(){
                 $.ajax({
-                    url: recommandationsApiUrl + "?_=" + Math.random(),
+                    url: recommendationsApiUrl + "?_=" + Math.random(),
                     type: "GET"
                 })
                 .success(function(message){
-                    recommandationsApiPlaceholder.text(message);
+                    recommendationsApiPlaceholder.text(message);
                 })
                 .error(function(){
-                    recommandationsApiPlaceholder.text("Not responding...");
+                    recommendationsApiPlaceholder.text("Not responding...");
                 });
             };
 
@@ -80,7 +80,7 @@
             };
 
             setInterval(callProductsApi, 3000);
-            setInterval(callRecommandationsApi, 3000);
+            setInterval(callRecommendationsApi, 3000);
             setInterval(callRatingsApi, 3000);
         }));
     </script>
