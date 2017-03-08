@@ -6,8 +6,9 @@ spec:
   minReadySeconds: 10
   template:
     metadata:
-      labels: myshop-deployment
-      version: v0.1
+      labels: 
+        name: myshop-deployment
+        version: v0.1
     spec:
       containers:
       - name: proxy
