@@ -13,7 +13,7 @@ spec:
       - name: proxy
         image: bhacr-microsoft.azurecr.io/shop/nginx-proxy:BuildNumber
         ports:
-          - containerPort: 80
+        - containerPort: 80
       - name: products
         image: bhacr-microsoft.azurecr.io/shop/products-api:BuildNumber
       - name: ratings
@@ -23,9 +23,9 @@ spec:
       - name: shop
         image: bhacr-microsoft.azurecr.io/shop/front:BuildNumber
         env:
-          - name: SHOP_PRODUCTS_API_URL
-            value: http://bhk8s.westeurope.cloudapp.azure.com/products/
-          - name: SHOP_RATINGS_API_URL
-            value: http://bhk8s.westeurope.cloudapp.azure.com/ratings/
-          - name: SHOP_RECOMMANDATIONS_API_URL
-            value: http://bhk8s.westeurope.cloudapp.azure.com/recommendations/
+        - name: SHOP_PRODUCTS_API_URL
+          value: http://bhk8s.westeurope.cloudapp.azure.com/products/
+        - name: SHOP_RATINGS_API_URL
+          value: http://bhk8s.westeurope.cloudapp.azure.com/ratings/
+        - name: SHOP_RECOMMANDATIONS_API_URL
+          value: http://bhk8s.westeurope.cloudapp.azure.com/recommendations/
