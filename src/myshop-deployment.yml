@@ -17,19 +17,11 @@ spec:
         - containerPort: 80
       - name: products
         image: bhacr-microsoft.azurecr.io/shop/products-api:BuildNumber
-        ports:
-        - containerPort: 5001
       - name: ratings
         image: bhacr-microsoft.azurecr.io/shop/ratings-api:BuildNumber
-        ports:
-        - containerPort: 5002
       - name: recommendations
         image: bhacr-microsoft.azurecr.io/shop/recommendations-api:BuildNumber
-        ports:
-        - containerPort: 5003
       - name: shop
         image: bhacr-microsoft.azurecr.io/shop/front:BuildNumber
-        ports:
-        - containerPort: 5000
       imagePullSecrets: 
         - name: bhacr
