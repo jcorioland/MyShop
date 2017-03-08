@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:1.1.0-sdk-projectjson
+FROM microsoft/dotnet:1.0.0-preview2-sdk
 
 MAINTAINER Julien Corioland, Microsoft (@jcorioland)
 
