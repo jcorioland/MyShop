@@ -32,13 +32,13 @@
             var recommendationsApiPlaceholder = $("#RecommendationsApiPlaceholder");
             var ratingsApiPlaceholder = $("#RatingsApiPlaceholder");
 
-//            var productsApiUrl = "@settings.Value.ProductsApiUrl" + "/api/products";
-//            var recommendationsApiUrl = "@settings.Value.RecommendationsApiUrl" + "/api/recommendations";
-//            var ratingsApiUrl = "@settings.Value.RatingsApiUrl" + "/api/ratings";
+            //var productsApiUrl = "http://13.81.253.110/api/products";
+            //var recommendationsApiUrl = "http://13.81.253.110/api/recommendations";
+            //var ratingsApiUrl = "http://13.81.253.110/api/ratings";
 
-              var productsApiUrl = "http://13.81.253.110/api/products";
-              var recommendationsApiUrl = "http://13.81.253.110/api/recommendations";
-              var ratingsApiUrl = "http://13.81.253.110/api/ratings";
+            var productsApiUrl = "http://localhost:5001/api/products";
+            var ratingsApiUrl = "http://localhost:5002/api/products";
+            var recommendationsApiUrl = "http://localhost:5003/api/recommendations";
 
             productsApiPlaceholder.text("loading...");
             recommendationsApiPlaceholder.text("loading...");
