@@ -4,7 +4,6 @@ metadata:
   name: myshop-deployment
 spec:
   minReadySeconds: 10
-  replicas: 2
   template:
     metadata:
       labels: 
