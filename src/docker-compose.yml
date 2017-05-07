@@ -4,24 +4,24 @@ networks:
     driver: overlay
 services:
   proxy:
-    image: acsswarmacr.io/shop/nginx-proxy:latest
+    image: acsswarmacr.io/proxy:latest
     ports: ["80:80"]
     networks:
       - myshop
   products:
-    image: acsswarmacr.azurecr.io/shop/products-api:BuildNumber
+    image: acsswarmacr.azurecr.io/productsapi:BuildNumber
     networks:
       - myshop
   ratings:
-    image: acsswarmacr.azurecr.io/shop/ratings-api:BuildNumber
+    image: acsswarmacr.azurecr.io/ratingsapi:BuildNumber
     networks:
       - myshop
   recommandations:
-    image: acsswarmacr.azurecr.io/shop/recommandations-api:BuildNumber
+    image: acsswarmacr.azurecr.io/recommendationsapi:BuildNumber
     networks:
       - myshop
   shop:
-    image: acsswarmacr.azurecr.io/shop/front:BuildNumber
+    image: acsswarmacr.azurecr.io/shopfront:BuildNumber
     networks:
       - myshop
     environment:
