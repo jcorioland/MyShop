@@ -8,7 +8,7 @@ EXPOSE 5000
 
 ENV ASPNETCORE_URLS http://+:5000
 
-COPY MyShop.csproj ./
+COPY ShopFront.csproj ./
 RUN ["dotnet", "restore"]
 
 COPY . /app
