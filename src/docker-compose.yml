@@ -4,7 +4,7 @@ networks:
     driver: overlay
 services:
   proxy:
-    image: acsswarmacr.io/proxy:latest
+    image: acsswarmacr.azurecr.io/proxy:BuildNumber
     ports: ["80:80"]
     networks:
       - myshop
@@ -25,6 +25,6 @@ services:
     networks:
       - myshop
     environment:
-      - SHOP_PRODUCTS_API_URL=http://gkanatsiosacsswarmagents.westeurope.cloudapp.azure.com.westeurope.cloudapp.azure.com/products/
-      - SHOP_RATINGS_API_URL=http://gkanatsiosacsswarmagents.westeurope.cloudapp.azure.com.westeurope.cloudapp.azure.com/ratings/
-      - SHOP_RECOMMANDATIONS_API_URL=http://gkanatsiosacsswarmagents.westeurope.cloudapp.azure.com.westeurope.cloudapp.azure.com/recommandations/
+      - SHOP_PRODUCTS_API_URL=http://gkanatsiosacsswarmagents.westeurope.cloudapp.azure.com/products/
+      - SHOP_RATINGS_API_URL=http://gkanatsiosacsswarmagents.westeurope.cloudapp.azure.com/ratings/
+      - SHOP_RECOMMANDATIONS_API_URL=http://gkanatsiosacsswarmagents.westeurope.cloudapp.azure.com/recommandations/
