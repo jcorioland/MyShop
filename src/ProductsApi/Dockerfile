@@ -10,6 +10,7 @@ ENV ASPNETCORE_URLS http://+:5000
 
 COPY project.json ./
 RUN ["ls"]
+RUN ["pwd"]
 RUN ["dotnet", "restore"]
 
 COPY . /app
