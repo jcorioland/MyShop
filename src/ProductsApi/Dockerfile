@@ -8,7 +8,8 @@ EXPOSE 5000
 
 ENV ASPNETCORE_URLS http://+:5000
 
-COPY project.json ./
+COPY ProductsApi.csproj ./
+
 RUN ["dotnet", "restore"]
 
 COPY . /app
