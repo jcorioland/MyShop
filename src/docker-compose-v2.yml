@@ -1,0 +1,30 @@
+version: '2'
+networks:
+  myshop:
+    driver: overlay
+services:
+  proxy:
+    image: RegistryUrl/myshop/proxy:1.0
+    ports: ["80:80"]
+    networks:
+      - myshop
+  products:
+    image: RegistryUrl/myshop/products-api:BuildNumber
+    networks:
+      - myshop
+  ratings:
+    image: RegistryUrl/myshop/ratings-api:BuildNumber
+    networks:
+      - myshop
+  recommandations:
+    image: RegistryUrl/myshop/recommandations-api:BuildNumber
+    networks:
+      - myshop
+  shop:
+    image: RegistryUrl/myshop/front:BuildNumber
+    networks:
+      - myshop
+    environment:
+      - SHOP_PRODUCTS_API_URL=/products/
+      - SHOP_RATINGS_API_URL=/ratings/
+      - SHOP_RECOMMANDATIONS_API_URL=/recommandations/
