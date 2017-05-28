@@ -1,0 +1,40 @@
+version: '3'
+networks:
+  myshop:
+    driver: overlay
+services:
+  proxy:
+    image: RegistryUrl/proxy
+    ports: ["80:80"]
+    networks:
+      - myshop
+    deploy:
+      replicas: 1
+  products:
+    image: RegistryUrl/products-api
+    networks:
+      - myshop
+    deploy:
+      replicas: 1
+  ratings:
+    image: RegistryUrl/ratings-api
+    networks:
+      - myshop
+    deploy:
+      replicas: 1
+  recommandations:
+    image: RegistryUrl/recommendations-api
+    networks:
+      - myshop
+    deploy:
+      replicas: 1
+  shop:
+    image: RegistryUrl/shopfront
+    networks:
+      - myshop
+    deploy:
+      replicas: 1
+    environment:
+      - SHOP_PRODUCTS_API_URL=http://AgentUrl/products/
+      - SHOP_RATINGS_API_URL=http://AgentUrl/ratings/
+      - SHOP_RECOMMANDATIONS_API_URL=http://AgentUrl/recommandations/
