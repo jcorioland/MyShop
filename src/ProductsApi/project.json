@@ -15,9 +15,7 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-    "Microsoft.AspNetCore.Cors": "1.0.0",
-    "Swashbuckle.SwaggerGen": "6.0.0-beta901",
-    "Swashbuckle.SwaggerUi": "6.0.0-beta901"
+    "Microsoft.AspNetCore.Cors":"1.0.0"
   },
 
   "tools": {
@@ -26,19 +24,16 @@
 
   "frameworks": {
     "netcoreapp1.0": {
-      "dependencies": {
-        "Microsoft.NETCore.App": {
-          "type": "platform",
-          "version": "1.0.1"
-        }
-      },
-      "imports": "dnxcore50"
+      "imports": [
+        "dotnet5.6",
+        "portable-net45+win8"
+      ]
     }
   },
 
   "buildOptions": {
-    "debugType": "portable",
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
   },
 
   "runtimeOptions": {

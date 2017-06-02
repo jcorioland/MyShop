@@ -27,8 +27,8 @@ namespace RatingsApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
             services.AddCors();
+            // Add framework services.
             services.AddMvc();
         }
 
@@ -38,11 +38,11 @@ namespace RatingsApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseCors(cors => {
-                cors.AllowAnyHeader();
-                cors.AllowAnyMethod();
-                cors.AllowAnyOrigin();
-            });
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+            );
 
             app.UseMvc();
         }

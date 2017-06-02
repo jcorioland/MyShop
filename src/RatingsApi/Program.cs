@@ -18,20 +18,10 @@ namespace RatingsApi
                 .AddEnvironmentVariables(prefix: "ASPNETCORE_")
                 .AddEnvironmentVariables(prefix: "SHOP_")
                 .Build();
-
-            string port = config["RATINGS_API_PORT"];
-
-            if(string.IsNullOrEmpty(port))
-            {
-                throw new InvalidOperationException("SHOP_RATINGS_API_PORT configuration was not found.");
-            }
-
-            string url = $"http://0.0.0.0:{port}";
             
             var host = new WebHostBuilder()
                 .UseConfiguration(config)
                 .UseKestrel()
-                .UseUrls(url)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()

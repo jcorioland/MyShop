@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "Microsoft.NETCore.App": {
-      "version": "1.0.1",
+      "version": "1.0.0",
       "type": "platform"
     },
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
@@ -20,8 +20,7 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-    "Microsoft.AspNetCore.Cors": "1.0.0"
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0"
   },
 
   "tools": {
@@ -63,7 +62,7 @@
   "scripts": {
     "precompile": [ "dotnet bundle" ],
     "prepublish": [ "bower install" ],
-    "postpublish": "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
+    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   },
 
   "tooling": {

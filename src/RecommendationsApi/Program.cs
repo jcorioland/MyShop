@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 
-namespace RecommandationsApi
+namespace RecommendationsApi
 {
     public class Program
     {
@@ -18,20 +18,10 @@ namespace RecommandationsApi
                 .AddEnvironmentVariables(prefix: "ASPNETCORE_")
                 .AddEnvironmentVariables(prefix: "SHOP_")
                 .Build();
-
-            string port = config["RECOMMANDTIONS_API_PORT"];
-
-            if(string.IsNullOrEmpty(port))
-            {
-                throw new InvalidOperationException("SHOP_RECOMMANDTIONS_API_PORT configuration was not found.");
-            }
-
-            string url = $"http://0.0.0.0:{port}";
             
             var host = new WebHostBuilder()
                 .UseConfiguration(config)
                 .UseKestrel()
-                .UseUrls(url)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()

@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: myshop-deployment
+spec:
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels: 
+        name: myshop-deployment
+    spec:
+      containers:
+      - name: proxy
+        image: bhacr-microsoft.azurecr.io/shop/nginx-proxy:BuildNumber
+        ports:
+        - containerPort: 80
+      - name: products
+        image: bhacr-microsoft.azurecr.io/shop/products-api:BuildNumber
+      - name: ratings
+        image: bhacr-microsoft.azurecr.io/shop/ratings-api:BuildNumber
+      - name: recommendations
+        image: bhacr-microsoft.azurecr.io/shop/recommendations-api:BuildNumber
+      - name: shop
+        image: bhacr-microsoft.azurecr.io/shop/front:BuildNumber
+      imagePullSecrets: 
+        - name: bhacr

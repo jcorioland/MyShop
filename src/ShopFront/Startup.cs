@@ -29,14 +29,13 @@ namespace ShopFront
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddCors();
             services.AddMvc();
 
             // settings
             services.Configure<ShopFront.Models.Settings>(settings => 
             {
                 settings.ProductsApiUrl = Configuration["SHOP_PRODUCTS_API_URL"];
-                settings.RecommandationsApiUrl = Configuration["SHOP_RECOMMANDATIONS_API_URL"];
+                settings.RecommendationsApiUrl = Configuration["SHOP_RECOMMANDATIONS_API_URL"];
                 settings.RatingsApiUrl = Configuration["SHOP_RATINGS_API_URL"];
             });
         }
@@ -46,12 +45,6 @@ namespace ShopFront
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-            app.UseCors(cors => {
-                cors.AllowAnyHeader();
-                cors.AllowAnyMethod();
-                cors.AllowAnyOrigin();
-            });
 
             if (env.IsDevelopment())
             {

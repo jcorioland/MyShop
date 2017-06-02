@@ -1,6 +1,6 @@
 @inject Microsoft.Extensions.Options.IOptions<ShopFront.Models.Settings> settings
 @{
-    ViewData["Title"] = "Welcome home";
+    ViewData["Title"] = "CI/CD, test number 2!";
 }
 
 <div class="row">
@@ -16,8 +16,8 @@
         <span id="ProductsApiPlaceholder"></span>
     </div>
     <div class="col-lg-4">
-        <h3>Recommandations Api</h3>
-        <span id="RecommandationsApiPlaceholder"></span>
+        <h3>Recommendations Api</h3>
+        <span id="RecommendationsApiPlaceholder"></span>
     </div>
     <div class="col-lg-4">
         <h3>Ratings Api</h3>
@@ -29,16 +29,16 @@
     <script type="text/javascript">
         ($(document).ready(function(){
             var productsApiPlaceholder = $("#ProductsApiPlaceholder");
-            var recommandationsApiPlaceholder = $("#RecommandationsApiPlaceholder");
+            var recommendationsApiPlaceholder = $("#RecommendationsApiPlaceholder");
             var ratingsApiPlaceholder = $("#RatingsApiPlaceholder");
 
-            var productsApiUrl = "@settings.Value.ProductsApiUrl" + "/api/products";
-            var recommandationsApiUrl = "@settings.Value.RecommandationsApiUrl" + "/api/recommandations";
-            var ratingsApiUrl = "@settings.Value.RatingsApiUrl" + "/api/ratings";
+            var productsApiUrl = "api/products";
+            var ratingsApiUrl = "api/ratings";
+            var recommendationsApiUrl = "api/recommendations";
 
-            productsApiPlaceholder.text("chargement...");
-            recommandationsApiPlaceholder.text("chargement...");
-            ratingsApiPlaceholder.text("chargement...");
+            productsApiPlaceholder.text("loading...");
+            recommendationsApiPlaceholder.text("loading...");
+            ratingsApiPlaceholder.text("loading...");
 
             function callProductsApi(){
                 $.ajax({
@@ -49,20 +49,20 @@
                     productsApiPlaceholder.text(message);
                 })
                 .error(function(){
-                    productsApiPlaceholder.text("Service indisponible.");
+                    productsApiPlaceholder.text("Not responding...");
                 });
             };
 
-            function callRecommandationsApi(){
+            function callRecommendationsApi(){
                 $.ajax({
-                    url: recommandationsApiUrl + "?_=" + Math.random(),
+                    url: recommendationsApiUrl + "?_=" + Math.random(),
                     type: "GET"
                 })
                 .success(function(message){
-                    recommandationsApiPlaceholder.text(message);
+                    recommendationsApiPlaceholder.text(message);
                 })
                 .error(function(){
-                    recommandationsApiPlaceholder.text("Service indisponible.");
+                    recommendationsApiPlaceholder.text("Not responding...");
                 });
             };
 
@@ -75,12 +75,12 @@
                     ratingsApiPlaceholder.text(message);
                 })
                 .error(function(){
-                    ratingsApiPlaceholder.text("Service indisponible.");
+                    ratingsApiPlaceholder.text("Not responding...");
                 });
             };
 
             setInterval(callProductsApi, 3000);
-            setInterval(callRecommandationsApi, 3000);
+            setInterval(callRecommendationsApi, 3000);
             setInterval(callRatingsApi, 3000);
         }));
     </script>
